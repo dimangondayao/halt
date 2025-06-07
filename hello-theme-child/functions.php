@@ -68,24 +68,4 @@ add_action( 'elementor/element/before_section_end', function ( \Elementor\Contro
 // as the toggle in Gravity Forms is no longer available.
 add_filter( 'gform_enable_legacy_markup', '__return_false' );
 
-add_action( 'elementor/query/halt_loop_limit', function( $query ) {
-    $query->set( 'posts_per_page', 4 );
-} );
-
-add_action( 'elementor/query/halt_blog_offset', function( $query ) {
-    $posts_per_page = 7;
-    $paged = max( 1, $query->get( 'paged' ) );
-
-    $query->set( 'posts_per_page', $posts_per_page );
-
-    if ( $paged === 1 ) {
-        // Get first 5 post IDs to exclude
-        $exclude_ids = get_posts([
-            'post_type' => 'post',
-            'posts_per_page' => 5,
-            'fields' => 'ids',
-        ]);
-
-        $query->set( 'post__not_in', $exclude_ids );
-    }
-} );
+include( 'inc/queries.php' );
