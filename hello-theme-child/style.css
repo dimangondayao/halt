@@ -6,7 +6,7 @@ Author: Anthem Creative
 Author URI: https://anthemcreative.ca/
 Template: hello-elementor
 License: Commercial
-Version: 1.1.0
+Version: 1.1.1
 */
 
 body,
@@ -21,4 +21,8 @@ main {
 .elementor hr {
     border: 1px solid black;
     margin: 2rem 0 1rem !important;
+}
+
+#comments {
+    display: none;
 }
